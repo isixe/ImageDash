@@ -36,3 +36,5 @@ next-env.d.ts
 
 # Uploads
 /public/uploads
+
+.history
