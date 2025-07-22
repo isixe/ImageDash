@@ -5,6 +5,9 @@ export async function POST(request: Request): Promise<NextResponse> {
 	const { searchParams } = new URL(request.url);
 	const filename = searchParams.get("filename") || `${Date.now()}.png`;
 
+	if (!request.body) {
+		return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+	}
 	const blob = await put(filename, request.body, {
 		access: "public",
 	});
