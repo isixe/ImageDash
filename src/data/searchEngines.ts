@@ -34,12 +34,6 @@ export const searchEngines: SearchEngine[] = [
 		textSearchUrl: "https://tineye.com/search?q=",
 	},
 	{
-		name: "Baidu",
-		icon: "baidu",
-		url: "https://graph.baidu.com/details?isfromtusoupc=1&tn=pc&carousel=0&image=",
-		textSearchUrl: "https://image.baidu.com/search/index?word=",
-	},
-	{
 		name: "Sogou",
 		icon: "sogou",
 		url: "https://ris.sogou.com/ris?flag=1&from=pic_result_list&query=",
