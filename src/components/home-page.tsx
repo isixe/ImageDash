@@ -159,7 +159,7 @@ export function HomePage() {
 	return (
 		<div className="flex w-full flex-col bg-background">
 			<main className="flex-1">
-				<section id="hero" className="py-20 sm:py-32">
+				<section id="hero" className="py-20">
 					<div className="container px-4 md:px-6 text-center flex flex-col items-center">
 						<h1 className="text-4xl font-extrabold tracking-tighter font-headline sm:text-5xl md:text-6xl lg:text-7xl">
 							Find Any Image, Fast
