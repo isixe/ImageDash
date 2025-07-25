@@ -78,11 +78,18 @@ export function useImageSearch({ onReset }: UseImageSearchProps = {}) {
 
 	const handleSearch = (engine: SearchEngine) => {
 		let url = "";
+
+		const baseUrl = window.location.origin;
+
 		if (imageUrl && engine.url) {
-			url = `${engine.url}${encodeURIComponent(imageUrl)}`;
-		} else if (searchQuery && !isQueryImageUrl && engine.textSearchUrl) {
-			url = `${engine.textSearchUrl}${encodeURIComponent(searchQuery)}`;
+			url = `${engine.url}${baseUrl}${imageUrl}`;
 		}
+
+		if (searchQuery && engine.textSearchUrl) {
+			url = `${engine.textSearchUrl}${baseUrl}${searchQuery}`;
+		}
+
+		console.log(url);
 
 		if (url) {
 			window.open(url, "_blank");

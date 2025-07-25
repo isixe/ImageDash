@@ -142,12 +142,15 @@ export function HomePage() {
 	const handleSearchAll = () => {
 		searchEngines.forEach((engine) => {
 			let url = "";
+
+			const baseUrl = window.location.origin;
+
 			if (imageUrl && engine.url) {
-				url = `${engine.url}${imageUrl}`;
+				url = `${engine.url}${baseUrl}${imageUrl}`;
 			}
 
 			if (searchQuery && engine.textSearchUrl) {
-				url = `${engine.textSearchUrl}${encodeURIComponent(searchQuery)}`;
+				url = `${engine.textSearchUrl}${baseUrl}${searchQuery}`;
 			}
 
 			if (url) {

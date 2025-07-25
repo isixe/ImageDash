@@ -27,7 +27,6 @@ export async function POST(request: Request): Promise<NextResponse> {
 export async function GET(request: Request): Promise<NextResponse> {
 	const { searchParams } = new URL(request.url);
 	const filename = searchParams.get("filename");
-	console.log("Fetching image with filename:", filename);
 
 	if (!filename) {
 		return NextResponse.json({ error: "Filename is required" }, { status: 400 });
