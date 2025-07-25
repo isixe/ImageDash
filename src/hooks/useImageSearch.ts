@@ -26,7 +26,9 @@ export function useImageSearch({ onReset }: UseImageSearchProps = {}) {
 		if (isUrl) {
 			setImagePreview(searchQuery);
 			setImageUrl(searchQuery);
-		} else if (isQueryImageUrl) {
+		}
+
+		if (isQueryImageUrl) {
 			// It was a URL before, but now it's not. Reset image states.
 			setImagePreview(null);
 			setImageUrl(null);
@@ -51,7 +53,7 @@ export function useImageSearch({ onReset }: UseImageSearchProps = {}) {
 
 		try {
 			const filename = await uploadImage(file);
-			const imageUrl = `/api/upload?filename=${encodeURIComponent(filename)}`;
+			const imageUrl = `/api/upload?filename=${filename}`;
 			setImagePreview(imageUrl);
 			setImageUrl(imageUrl);
 		} catch (error: any) {

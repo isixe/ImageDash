@@ -143,8 +143,10 @@ export function HomePage() {
 		searchEngines.forEach((engine) => {
 			let url = "";
 			if (imageUrl && engine.url) {
-				url = `${engine.url}${encodeURIComponent(imageUrl)}`;
-			} else if (searchQuery && engine.textSearchUrl) {
+				url = `${engine.url}${imageUrl}`;
+			}
+
+			if (searchQuery && engine.textSearchUrl) {
 				url = `${engine.textSearchUrl}${encodeURIComponent(searchQuery)}`;
 			}
 
@@ -226,7 +228,7 @@ export function HomePage() {
 														<Button
 															key={engine.name}
 															variant="outline"
-															className="h-12 text-base font-semibold bg-card hover:bg-muted/50 border-border/50 group transition-all duration-300 transform hover:border-primary"
+															className="h-12 text-base font-semibold bg-card hover:text-black hover:bg-muted/50 border-border/50 group transition-all duration-300 transform hover:border-primary"
 															disabled={
 																isLoading ||
 																(!imageUrl && !searchQuery) ||
