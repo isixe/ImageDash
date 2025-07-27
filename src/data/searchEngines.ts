@@ -33,10 +33,4 @@ export const searchEngines: SearchEngine[] = [
 		url: "https://tineye.com/search/?rpt=imageview&url=",
 		textSearchUrl: "https://tineye.com/search?q=",
 	},
-	{
-		name: "Sogou",
-		icon: "sogou",
-		url: "https://ris.sogou.com/ris?flag=1&from=pic_result_list&query=",
-		textSearchUrl: "https://pic.sogou.com/pics?query=",
-	},
 ];
