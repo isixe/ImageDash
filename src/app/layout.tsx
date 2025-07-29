@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
-import "./globals.css";
+import "@/styles/globals.css";
 import { ImageIcon } from "lucide-react";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeProvider } from "@/components/provider/theme-provider";
+import { ThemeToggle } from "@/components/widget/theme-toggle";
 
 export const metadata: Metadata = {
 	title: "Image Dash - Reverse Image & Text Search",
