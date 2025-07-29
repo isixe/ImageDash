@@ -1,9 +1,9 @@
 import type { SVGProps } from "react";
-import { Icons } from "@/components/icons";
+import { IconName, Icons } from "@/components/icon/icons";
 
 export interface SearchEngine {
 	name: string;
-	icon: keyof typeof Icons;
+	icon: IconName;
 	url?: string;
 	textSearchUrl?: string;
 }

@@ -5,12 +5,11 @@ import { UploadCloud, Search, Upload, Loader2, Rocket, ShieldCheck, Sparkles, Ca
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Icons } from "@/components/icons";
+import { IconName, Icons } from "@/components/icon/icons";
 import { cn } from "@/lib/utils";
 import { useImageSearch } from "@/hooks/useImageSearch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { searchEngines } from "@/data/searchEngines";
-import type { SearchEngine } from "@/data/searchEngines";
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
 	return (
@@ -116,7 +115,7 @@ const TestimonialCard = ({ name, quote, avatarUrl }: { name: string; quote: stri
 	</Card>
 );
 
-const getIconComponent = (iconName: keyof typeof Icons) => {
+const getIconComponent = (iconName: IconName) => {
 	return Icons[iconName] || null;
 };
 

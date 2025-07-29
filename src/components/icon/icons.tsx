@@ -1,7 +1,24 @@
 import type { SVGProps } from "react";
+import { memo } from "react";
 
-const GoogleIcon = (props: SVGProps<SVGSVGElement>) => (
-	<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 48 48">
+interface IconProps extends SVGProps<SVGSVGElement> {
+	size?: number | string;
+	className?: string;
+}
+
+export const defaultIconProps: Partial<IconProps> = {
+	width: 24,
+	height: 24,
+	fill: "currentColor",
+};
+
+const GoogleIcon = memo<IconProps>(({ size, ...props }) => (
+	<svg
+		{...defaultIconProps}
+		{...(size && { width: size, height: size })}
+		{...props}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 48 48">
 		<path
 			fill="#FFC107"
 			d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
@@ -19,13 +36,18 @@ const GoogleIcon = (props: SVGProps<SVGSVGElement>) => (
 			d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
 		/>
 	</svg>
-);
+));
 
-const BingIcon = (props: SVGProps<SVGSVGElement>) => (
-	<svg xmlns="http://www.w3.org/2000/svg" width="84.46" height="128" viewBox="0 0 256 388">
+const BingIcon = memo<IconProps>(({ size, ...props }) => (
+	<svg
+		{...defaultIconProps}
+		{...(size && { width: size, height: size })}
+		{...props}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 256 388">
 		<defs>
 			<radialGradient
-				id="IconifyId198566a70223bf7cd3"
+				id="bing-gradient-1"
 				cx="93.717%"
 				cy="77.818%"
 				r="143.121%"
@@ -36,7 +58,7 @@ const BingIcon = (props: SVGProps<SVGSVGElement>) => (
 				<stop offset="100%" stopColor="#048FCE" />
 			</radialGradient>
 			<radialGradient
-				id="IconifyId198566a70223bf7cd4"
+				id="bing-gradient-2"
 				cx="13.893%"
 				cy="71.448%"
 				r="150.086%"
@@ -46,37 +68,49 @@ const BingIcon = (props: SVGProps<SVGSVGElement>) => (
 				<stop offset="0%" stopColor="#00BBEC" />
 				<stop offset="100%" stopColor="#2756A9" />
 			</radialGradient>
-			<linearGradient id="IconifyId198566a70223bf7cd5" x1="50%" x2="50%" y1="0%" y2="100%">
+			<linearGradient id="bing-gradient-3" x1="50%" x2="50%" y1="0%" y2="100%">
 				<stop offset="0%" stopColor="#00BBEC" />
 				<stop offset="100%" stopColor="#2756A9" />
 			</linearGradient>
 		</defs>
 		<path
-			fill="url(#IconifyId198566a70223bf7cd3)"
+			fill="url(#bing-gradient-1)"
 			d="M129.424 122.047c-7.133.829-12.573 6.622-13.079 13.928c-.218 3.147-.15 3.36 6.986 21.722c16.233 41.774 20.166 51.828 20.827 53.243c1.603 3.427 3.856 6.65 6.672 9.544c2.16 2.22 3.585 3.414 5.994 5.024c4.236 2.829 6.337 3.61 22.818 8.49c16.053 4.754 24.824 7.913 32.381 11.664c9.791 4.86 16.623 10.387 20.944 16.946c3.1 4.706 5.846 13.145 7.04 21.64c.468 3.321.47 10.661.006 13.663c-1.008 6.516-3.021 11.976-6.101 16.545c-1.638 2.43-1.068 2.023 1.313-.939c6.74-8.379 13.605-22.7 17.108-35.687c4.24-15.718 4.817-32.596 1.66-48.57c-6.147-31.108-25.786-57.955-53.444-73.06c-1.738-.95-8.357-4.42-17.331-9.085a1633 1633 0 0 1-4.127-2.154c-.907-.477-2.764-1.447-4.126-2.154c-1.362-.708-5.282-2.75-8.711-4.539l-8.528-4.446a6021 6021 0 0 1-8.344-4.357c-8.893-4.655-12.657-6.537-13.73-6.863c-1.125-.343-3.984-.782-4.701-.723c-.152.012-.838.088-1.527.168"
 		/>
 		<path
-			fill="url(#IconifyId198566a70223bf7cd4)"
+			fill="url(#bing-gradient-2)"
 			d="M148.81 277.994c-.493.292-1.184.714-1.537.938c-.354.225-1.137.712-1.743 1.083a8315 8315 0 0 0-13.204 8.137a2848 2848 0 0 0-8.07 4.997a388 388 0 0 1-3.576 2.198c-.454.271-2.393 1.465-4.31 2.654a2652 2652 0 0 1-7.427 4.586a3958 3958 0 0 0-8.62 5.316a3011 3011 0 0 1-7.518 4.637c-1.564.959-3.008 1.885-3.21 2.058c-.3.257-14.205 8.87-21.182 13.121c-5.3 3.228-11.43 5.387-17.705 6.235c-2.921.395-8.45.396-11.363.003c-7.9-1.067-15.176-4.013-21.409-8.666c-2.444-1.826-7.047-6.425-8.806-8.8c-4.147-5.598-6.829-11.602-8.218-18.396c-.32-1.564-.622-2.884-.672-2.935c-.13-.13.105 2.231.528 5.319c.44 3.211 1.377 7.856 2.387 11.829c7.814 30.743 30.05 55.749 60.15 67.646c8.668 3.424 17.415 5.582 26.932 6.64c3.576.4 13.699.56 17.43.276c17.117-1.296 32.02-6.334 47.308-15.996c1.362-.86 3.92-2.474 5.685-3.585a877 877 0 0 0 4.952-3.14c.958-.615 2.114-1.341 2.567-1.614a91 91 0 0 0 2.018-1.268c.656-.424 3.461-2.2 6.235-3.944l11.092-7.006l3.809-2.406l.137-.086l.42-.265l.199-.126l2.804-1.771l9.69-6.121c12.348-7.759 16.03-10.483 21.766-16.102c2.392-2.342 5.997-6.34 6.176-6.848c.037-.104.678-1.092 1.424-2.197c3.036-4.492 5.06-9.995 6.064-16.484c.465-3.002.462-10.342-.005-13.663c-.903-6.42-2.955-13.702-5.167-18.339c-3.627-7.603-11.353-14.512-22.453-20.076c-3.065-1.537-6.23-2.943-6.583-2.924c-.168.009-10.497 6.322-22.954 14.03c-12.457 7.71-23.268 14.4-24.025 14.87s-2.056 1.263-2.888 1.764z"
 		/>
 		<path
-			fill="url(#IconifyId198566a70223bf7cd5)"
+			fill="url(#bing-gradient-3)"
 			d="m.053 241.013l.054 53.689l.695 3.118c2.172 9.747 5.937 16.775 12.482 23.302c3.078 3.07 5.432 4.922 8.768 6.896c7.06 4.177 14.657 6.238 22.978 6.235c8.716-.005 16.256-2.179 24.025-6.928c1.311-.801 6.449-3.964 11.416-7.029l9.032-5.572v-127.4l-.002-58.273c-.002-37.177-.07-59.256-.188-60.988c-.74-10.885-5.293-20.892-12.948-28.461c-2.349-2.323-4.356-3.875-10.336-7.99a25160 25160 0 0 1-12.104-8.336L28.617 5.835C22.838 1.85 22.386 1.574 20.639.949C18.367.136 15.959-.163 13.67.084C6.998.804 1.657 5.622.269 12.171C.053 13.191.013 26.751.01 100.35l-.003 86.975H0z"
 		/>
 	</svg>
-);
+));
 
-const YandexIcon = (props: SVGProps<SVGSVGElement>) => (
-	<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 32 32">
+const YandexIcon = memo<IconProps>(({ size, ...props }) => (
+	<svg
+		{...defaultIconProps}
+		{...(size && { width: size, height: size })}
+		{...props}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 32 32">
 		<path
 			fill="#d61e3b"
 			d="M21.88 2h-4c-4 0-8.07 3-8.07 9.62a8.33 8.33 0 0 0 4.14 7.66L9 28.13a1.25 1.25 0 0 0 0 1.27a1.21 1.21 0 0 0 1 .6h2.49a1.24 1.24 0 0 0 1.2-.75l4.59-9h.34v8.62a1.14 1.14 0 0 0 1.2 1.13H22a1.12 1.12 0 0 0 1.16-1.06V3.22A1.19 1.19 0 0 0 22 2ZM18.7 16.28h-.59c-2.3 0-3.66-1.87-3.66-5c0-3.9 1.73-5.29 3.34-5.29h.94Z"
 		/>
 	</svg>
-);
+));
 
-const TinEyeIcon = (props: SVGProps<SVGSVGElement>) => (
-	<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1272">
+const TinEyeIcon = memo<IconProps>(({ size, ...props }) => (
+	<svg
+		{...defaultIconProps}
+		{...(size && { width: size, height: size })}
+		{...props}
+		viewBox="0 0 1024 1024"
+		version="1.1"
+		xmlns="http://www.w3.org/2000/svg"
+		p-id="1272">
 		<path
 			d="M573.65 492.9c0.42-5.66-1.32-11.44 0.93-17v16.98c-0.29 0.44-0.61 0.47-0.93 0.02z"
 			fill="#FEF7BE"
@@ -498,11 +532,13 @@ const TinEyeIcon = (props: SVGProps<SVGSVGElement>) => (
 			fill="#161616"
 			p-id="1379"></path>
 	</svg>
-);
+));
 
 export const Icons = {
 	google: GoogleIcon,
 	bing: BingIcon,
 	yandex: YandexIcon,
 	tineye: TinEyeIcon,
-};
+} as const;
+
+export type IconName = keyof typeof Icons;
