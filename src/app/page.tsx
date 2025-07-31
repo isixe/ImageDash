@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { IconName, Icons } from "@/components/icon/icons";
-import { useImageSearch } from "@/hooks/useImageSearch";
+import { useImageUpload } from "@/hooks/useImageUpload";
 import { searchEngines } from "@/data/searchEngines";
 import LandingView from "@/components/view/landing-view";
 import ImageUploader from "@/components/widget/image-uploader";
@@ -32,7 +32,7 @@ export default function Page() {
 		resetState,
 		setSearchQuery,
 		handleSearch,
-	} = useImageSearch({ onReset: handleScrollToSearchArea });
+	} = useImageUpload({ onReset: handleScrollToSearchArea });
 
 	const handleSearchAll = () => {
 		searchEngines.forEach((engine) => {

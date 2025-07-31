@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { UploadCloud } from "lucide-react";
 import { Input } from "../ui/input";
+import { useImageUpload } from "@/hooks/useImageUpload";
 
 export default function ImageUploader({
 	onFileSelect,
@@ -10,6 +11,7 @@ export default function ImageUploader({
 	onFileSelect: (file: File) => void;
 	disabled: boolean;
 }) {
+	const { supportedFormats, supportedTypes } = useImageUpload();
 	const [isDragging, setIsDragging] = React.useState(false);
 	const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -66,13 +68,13 @@ export default function ImageUploader({
 				<UploadCloud className="h-8 w-8" />
 			</div>
 			<p className="font-headline text-xl font-semibold text-foreground">Drag & drop or click to upload</p>
-			<p className="mt-2 text-sm text-muted-foreground">PNG, JPG, or WEBP. Max 30MB.</p>
+			<p className="mt-2 text-sm text-muted-foreground">{supportedFormats}. Max 30MB.</p>
 			<Input
 				ref={fileInputRef}
 				type="file"
 				className="hidden"
 				onChange={onFileChange}
-				accept="image/png, image/jpeg, image/webp"
+				accept={supportedTypes.join(", ")}
 				disabled={disabled}
 			/>
 		</div>
