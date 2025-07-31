@@ -40,20 +40,47 @@ export function useImageUpload({ onReset }: UseImageSearchProps = {}) {
 	const [isQueryImageUrl, setIsQueryImageUrl] = React.useState(false);
 	const { toast } = useToast();
 
+	const isImageUrl = (url: string): Promise<boolean> => {
+		return new Promise((resolve) => {
+			const img = new Image();
+			img.src = url;
+			img.onload = () => resolve(true);
+			img.onerror = () => resolve(false);
+
+			const timeout = setTimeout(() => {
+				resolve(false);
+			}, 5000);
+
+			img.onload = () => {
+				clearTimeout(timeout);
+				resolve(true);
+			};
+
+			img.onerror = () => {
+				clearTimeout(timeout);
+				resolve(false);
+			};
+		});
+	};
+
 	React.useEffect(() => {
-		const isUrl = URL_REGEX.test(searchQuery);
-		setIsQueryImageUrl(isUrl);
+		const checkImageUrl = async () => {
+			const isUrl = await isImageUrl(searchQuery);
+			const wasUrlBefore = isQueryImageUrl;
 
-		if (isUrl) {
-			setImagePreview(searchQuery);
-			setImageUrl(searchQuery);
-		}
+			setIsQueryImageUrl(isUrl);
 
-		if (isQueryImageUrl) {
-			// It was a URL before, but now it's not. Reset image states.
-			setImagePreview(null);
-			setImageUrl(null);
-		}
+			if (isUrl) {
+				setImagePreview(searchQuery);
+				setImageUrl(searchQuery);
+			} else if (wasUrlBefore) {
+				// It was a URL before, but now it's not. Reset image states.
+				setImagePreview(null);
+				setImageUrl(null);
+			}
+		};
+
+		checkImageUrl();
 	}, [searchQuery, isQueryImageUrl]);
 
 	const isValidImageType = (fileType: string): boolean => {
@@ -102,19 +129,20 @@ export function useImageUpload({ onReset }: UseImageSearchProps = {}) {
 	};
 
 	const handleSearch = (engine: SearchEngine) => {
-		let url = "";
-
 		const baseUrl = window.location.origin;
 
 		if (imageUrl && engine.url) {
-			url = `${engine.url}${baseUrl}${imageUrl}`;
+			if (imageUrl.startsWith("http")) {
+				window.open(`${engine.url}${imageUrl}`, "_blank");
+				return;
+			}
+			const url = `${engine.url}${baseUrl}${imageUrl}`;
+			window.open(url, "_blank");
+			return;
 		}
 
 		if (searchQuery && engine.textSearchUrl) {
-			url = `${engine.textSearchUrl}${baseUrl}${searchQuery}`;
-		}
-
-		if (url) {
+			const url = `${engine.textSearchUrl}${baseUrl}${searchQuery}`;
 			window.open(url, "_blank");
 		}
 	};
