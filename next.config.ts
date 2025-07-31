@@ -1,26 +1,25 @@
-
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: '**'
       },
       {
         protocol: 'http',
-        hostname: '**',
+        hostname: '**'
       }
-    ],
-  },
-};
+    ]
+  }
+}
 
-export default nextConfig;
+export default nextConfig
