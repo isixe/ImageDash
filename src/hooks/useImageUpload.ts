@@ -106,6 +106,7 @@ export function useImageUpload({ onReset }: UseImageSearchProps = {}) {
       const imageUrl = `/api/upload?filename=${filename}`
       setImagePreview(imageUrl)
       setImageUrl(imageUrl)
+      onReset?.()
     } catch (error: unknown) {
       toast({
         title: 'Upload Error',
@@ -140,7 +141,7 @@ export function useImageUpload({ onReset }: UseImageSearchProps = {}) {
     }
 
     if (searchQuery && engine.textSearchUrl) {
-      const url = `${engine.textSearchUrl}${baseUrl}${searchQuery}`
+      const url = `${engine.textSearchUrl}${searchQuery}`
       window.open(url, '_blank')
     }
   }
