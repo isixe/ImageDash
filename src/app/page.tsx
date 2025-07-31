@@ -104,7 +104,7 @@ export default function Page() {
 
 									{searchQuery && !imagePreview && (
 										<div className="p-6 text-center">
-											<p className="text-lg font-medium text-foreground">
+											<p className="text-lg font-medium text-foreground break-all">
 												Searching for: <span className="font-bold text-primary">{searchQuery}</span>
 											</p>
 										</div>
