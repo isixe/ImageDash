@@ -74,7 +74,7 @@ export default function LandingView() {
             <FeatureCard
               icon={<Sparkles size={24} />}
               title="Multi-Engine Search"
-              description="Go beyond Google. Search Yandex, Bing, and DuckDuckGo to find exactly what you need."
+              description="Go beyond Google. Search Yandex, Bing, and TinEye to find exactly what you need."
             />
             <FeatureCard
               icon={<Camera size={24} />}
