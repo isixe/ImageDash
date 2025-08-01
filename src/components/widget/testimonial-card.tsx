@@ -15,8 +15,10 @@ export default function TestimonialCard({
     <Card className="border-border/50 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
       <CardContent className="p-0">
         <div className="mb-4 flex items-center">
-          <Avatar className="mr-4 flex h-12 w-12 items-center justify-center bg-slate-100 text-lg">
-            <AvatarFallback>{name.charAt(0).toUpperCase()}</AvatarFallback>
+          <Avatar className="mr-4 flex h-12 w-12 items-center justify-center bg-slate-100 text-lg dark:bg-slate-300">
+            <AvatarFallback className="text-slate-900">
+              {name.charAt(0).toUpperCase()}
+            </AvatarFallback>
           </Avatar>
           <div>
             <h4 className="font-headline text-lg font-bold">{name}</h4>
