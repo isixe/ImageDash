@@ -46,7 +46,7 @@ export default function Page() {
       }
 
       if (searchQuery && engine.textSearchUrl) {
-        url = `${engine.textSearchUrl}/${searchQuery}`
+        url = `${engine.textSearchUrl}${searchQuery}`
       }
 
       if (url) {
