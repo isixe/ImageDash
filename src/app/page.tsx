@@ -106,6 +106,7 @@ export default function Page() {
                         src={imagePreview}
                         width={500}
                         height={500}
+                        unoptimized
                         alt="Uploaded preview"
                         className="h-auto max-h-[500px] w-full rounded-md object-contain"
                       />
