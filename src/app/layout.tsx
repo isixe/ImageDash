@@ -6,6 +6,7 @@ import '@/styles/globals.css'
 
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
+import Script from 'next/script'
 
 export const runtime = 'edge'
 
@@ -53,8 +54,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const analyticsScript = process.env.NEXT_PUBLIC_ANALYTICS_SCRIPT ?? ''
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {analyticsScript && (
+          <Script
+            src={analyticsScript}
+            id="analytics"
+            data-website-id="image-dash"
+            defer
+          />
+        )}
+      </head>
       <body className="flex min-h-screen flex-col font-body antialiased">
         <ThemeProvider
           attribute="class"
