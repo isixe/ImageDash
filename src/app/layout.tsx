@@ -54,7 +54,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const analyticsScript = process.env.NEXT_PUBLIC_ANALYTICS_SCRIPT ?? ''
+  const analyticsScript = process.env.ANALYTICS_SCRIPT ?? ''
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
