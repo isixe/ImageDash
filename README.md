@@ -25,20 +25,20 @@ A fast image search launcher tool for initiating image searches across multiple 
 
 ## Installation
 
-### 1. Clone the Repository
+1. Clone the Repository
 
 ```bash
 git clone https://github.com/isixe/ImageDash.git
 cd ImageDash
 ```
 
-### 2. Install Dependencies
+2. Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-### 3. Configure Environment Variables
+3. Configure Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -47,7 +47,7 @@ UPSTASH_REDIS_REST_URL=your_redis_rest_url
 UPSTASH_REDIS_REST_TOKEN=your_redis_rest_token
 ```
 
-### 4. Start Development Server
+4. Start Development Server
 
 ```bash
 pnpm dev
