@@ -75,7 +75,7 @@ export default function Page() {
               <Input
                 type="search"
                 placeholder="Describe an image or paste an image URL..."
-                className={`h-14 w-full rounded-[15px] pl-12 text-base shadow-lg ${searchQuery ? 'pr-12' : 'pr-4'}`}
+                className={`h-14 w-full rounded-[15px] pl-12 text-base shadow-lg ${searchQuery ? 'pr-12' : ''}`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
