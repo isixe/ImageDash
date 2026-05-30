@@ -73,8 +73,9 @@ export default function Page() {
             <div className="relative">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
               <Input
+                type="search"
                 placeholder="Describe an image or paste an image URL..."
-                className="h-14 w-full rounded-[15px] pl-12 pr-12 text-base shadow-lg"
+                className={`h-14 w-full rounded-[15px] pl-12 text-base shadow-lg ${searchQuery ? 'pr-12' : 'pr-4'}`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
