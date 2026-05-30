@@ -8,7 +8,7 @@ import LandingView from '@/components/view/landing-view'
 import ImageUploader from '@/components/widget/image-uploader'
 import { searchEngines } from '@/data/searchEngines'
 import { useImageUpload } from '@/hooks/useImageUpload'
-import { Loader2, Search, Sparkles, Upload } from 'lucide-react'
+import { Loader2, Search, Sparkles, Upload, X } from 'lucide-react'
 import Image from 'next/image'
 import * as React from 'react'
 
@@ -73,12 +73,20 @@ export default function Page() {
             <div className="relative">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
               <Input
-                type="search"
                 placeholder="Describe an image or paste an image URL..."
-                className="h-14 w-full rounded-[15px] pl-12 pr-4 text-base shadow-lg"
+                className="h-14 w-full rounded-[15px] pl-12 pr-12 text-base shadow-lg"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
             </div>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">Or</p>
@@ -143,11 +151,11 @@ export default function Page() {
                             className="group h-12 transform border-border/50 bg-card text-base font-semibold transition-all duration-300 hover:border-primary hover:bg-muted/50 hover:text-black"
                             disabled={Boolean(
                               isLoading ||
-                                (!imageUrl && !searchQuery) ||
-                                (searchQuery &&
-                                  !engine.textSearchUrl &&
-                                  !isQueryImageUrl) ||
-                                (imageUrl && !engine.url)
+                              (!imageUrl && !searchQuery) ||
+                              (searchQuery &&
+                                !engine.textSearchUrl &&
+                                !isQueryImageUrl) ||
+                              (imageUrl && !engine.url)
                             )}
                             onClick={() => handleSearch(engine)}
                           >
